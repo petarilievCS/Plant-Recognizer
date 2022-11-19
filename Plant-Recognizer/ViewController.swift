@@ -25,6 +25,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         camera?.sourceType = .camera
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // customize navigation bar
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = UIColor.systemGreen
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+    }
+    
     @IBAction func cameraPressed(_ sender: UIBarButtonItem) {
         guard let safeCamera = camera else {
             fatalError("Camera picker not initialized")
