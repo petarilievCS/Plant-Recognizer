@@ -14,6 +14,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageView: UIImageView!
     
     var camera : UIImagePickerController?
+    let wikipediaURl = "https://en.wikipedia.org/w/api.php"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 DispatchQueue.main.async {
                     self.navigationItem.title = firstResult.identifier
                 }
+                self.performGetRequest(with: firstResult.identifier)
             }
         }
         
@@ -68,6 +70,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             try handler.perform([request])
         } catch {
             print("Error while performing request")
+        }
+    }
+    
+    // perform GET HTTP request to Wikipedia API
+    func performGetRequest(with flowerName: String) {
+        
+        let flowerID = flowerName.replacingOccurrences(of: " ", with: "%20")
+        let URLString = "\(wikipediaURl)?format=json&action=query&prop=extracts&exintro=&explaintest=&titles=\(flowerID)&indexpageids&redirects=1"
+        
+        if let URL = URL(string: URLString) {
+            let session = URLSession(configuration: .default)
+            let request = URLRequest(url: URL)
+            let task = session.dataTask(with: request) { data, response, error in
+                if let safeData = data {
+                    print(String(data: safeData, encoding: .utf8))
+                }
+            }
+            task.resume()
+        } else {
+            fatalError("Couldn't form URL")
         }
     }
     
