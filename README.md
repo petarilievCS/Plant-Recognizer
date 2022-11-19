@@ -1,5 +1,5 @@
 # Plant Recognizer
-iOS application that uses CoreML model to recognise a plant and give the user more information about it. Image and description of plant is obtained through HTTP requests to Wikipedia API
+iOS application that uses CoreML model to recognise a plant and give the user more information about it. Image and description of plant is obtained through HTTP requests to Wikipedia API. 
 
 # Demo 
 
