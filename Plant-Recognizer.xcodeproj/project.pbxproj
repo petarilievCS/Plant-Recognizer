@@ -13,6 +13,7 @@
 		E6A9156F2929460F00E72B22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A9156D2929460F00E72B22 /* Main.storyboard */; };
 		E6A915712929461200E72B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6A915702929461200E72B22 /* Assets.xcassets */; };
 		E6A915742929461200E72B22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A915722929461200E72B22 /* LaunchScreen.storyboard */; };
+		E6A9157E292947AF00E72B22 /* FlowerClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6A9157D292947AF00E72B22 /* FlowerClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E6A915702929461200E72B22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E6A915732929461200E72B22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6A915752929461200E72B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6A9157D292947AF00E72B22 /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				E6A915702929461200E72B22 /* Assets.xcassets */,
 				E6A915722929461200E72B22 /* LaunchScreen.storyboard */,
 				E6A915752929461200E72B22 /* Info.plist */,
+				E6A9157D292947AF00E72B22 /* FlowerClassifier.mlmodel */,
 			);
 			path = "Plant-Recognizer";
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A9157E292947AF00E72B22 /* FlowerClassifier.mlmodel in Sources */,
 				E6A9156C2929460F00E72B22 /* ViewController.swift in Sources */,
 				E6A915682929460F00E72B22 /* AppDelegate.swift in Sources */,
 				E6A9156A2929460F00E72B22 /* SceneDelegate.swift in Sources */,
