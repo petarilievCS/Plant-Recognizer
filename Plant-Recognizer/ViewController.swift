@@ -79,19 +79,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func performGetRequest(with flowerName: String) {
         
         let flowerID = flowerName.replacingOccurrences(of: " ", with: "%20")
-        let URLString = "\(wikipediaURl)?format=json&action=query&prop=extracts&exsentences=3&exintro=&explaintext=&titles=\(flowerID)&indexpageids&redirects=1"
-        print(URLString)
+        let ExtractString = "\(wikipediaURl)?format=json&action=query&prop=extracts&exsentences=3&exintro=&explaintext=&titles=\(flowerID)&indexpageids&redirects=1"
+        let ImageString = "\(wikipediaURl)?format=json&action=query&prop=pageimages&exsentences=3&exintro=&explaintext=&titles=\(flowerID)&indexpageids&redirects=1&pithumbsize=500"
         
+        fetchData(with: ExtractString, for: "text")
+        fetchData(with: ImageString, for: "image")
+        
+    }
+    
+    func fetchData(with URLString: String, for purpose: String) {
         if let URL = URL(string: URLString) {
             let session = URLSession(configuration: .default)
             let request = URLRequest(url: URL)
             let task = session.dataTask(with: request) { data, response, error in
                 if let safeData = data {
-                    if let description = self.parseJSON(safeData) {
-                        DispatchQueue.main.async {
-                            self.textLabel.text = description
+                    if purpose == "text" {
+                        if let flowerData = self.parseJSON(safeData) as? FlowerData {
+                            let pageID = flowerData.query.pageids[0]
+                            DispatchQueue.main.async {
+                                self.textLabel.text = flowerData.query.pages[pageID]!.extract
+                            }
+                        }
+                    } else {
+                        if let imageData = self.parseJSONImage(safeData) as? ImageData {
+                            let pageID = imageData.query.pageids[0]
+                            let imageURL = imageData.query.pages[pageID]?.thumbnail.source
+                            DispatchQueue.main.async {
+                                self.imageView.sd_setImage(with: Foundation.URL(string: imageURL!))
+                            }
                         }
                     }
+                    
                 }
             }
             task.resume()
@@ -100,13 +118,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    // parse JSON file for image from Wikipedia
+    func parseJSONImage(_ data: Data) -> Codable? {
+        let decoder = JSONDecoder()
+        do {
+            let imageData = try decoder.decode(ImageData.self, from: data)
+            return imageData
+        } catch {
+            print("Error while decoding data: \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
     // parse JSON file from Wikipedia API
-    func parseJSON(_ data: Data) -> String? {
+    func parseJSON(_ data: Data) -> Codable? {
         let decoder = JSONDecoder()
         do {
             let flowerData = try decoder.decode(FlowerData.self, from: data)
-            let pageID = flowerData.query.pageids[0]
-            return flowerData.query.pages[pageID]?.extract
+            return flowerData
         } catch {
             print("Error while decoding data: \(error.localizedDescription)")
         }
