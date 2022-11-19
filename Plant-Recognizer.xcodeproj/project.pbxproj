@@ -15,6 +15,8 @@
 		E6A915742929461200E72B22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A915722929461200E72B22 /* LaunchScreen.storyboard */; };
 		E6A9157E292947AF00E72B22 /* FlowerClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E6A9157D292947AF00E72B22 /* FlowerClassifier.mlmodel */; };
 		E6A9158129294F3F00E72B22 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E6A9158029294F3F00E72B22 /* Alamofire */; };
+		E6A9158329295C5D00E72B22 /* FlowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A9158229295C5D00E72B22 /* FlowerData.swift */; };
+		E6A915862929650C00E72B22 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E6A915852929650C00E72B22 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,7 @@
 		E6A915732929461200E72B22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6A915752929461200E72B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6A9157D292947AF00E72B22 /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
+		E6A9158229295C5D00E72B22 /* FlowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A915862929650C00E72B22 /* SDWebImage in Frameworks */,
 				E6A9158129294F3F00E72B22 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,6 +72,7 @@
 				E6A915722929461200E72B22 /* LaunchScreen.storyboard */,
 				E6A915752929461200E72B22 /* Info.plist */,
 				E6A9157D292947AF00E72B22 /* FlowerClassifier.mlmodel */,
+				E6A9158229295C5D00E72B22 /* FlowerData.swift */,
 			);
 			path = "Plant-Recognizer";
 			sourceTree = "<group>";
@@ -90,6 +95,7 @@
 			name = "Plant-Recognizer";
 			packageProductDependencies = (
 				E6A9158029294F3F00E72B22 /* Alamofire */,
+				E6A915852929650C00E72B22 /* SDWebImage */,
 			);
 			productName = "Plant-Recognizer";
 			productReference = E6A915642929460F00E72B22 /* Plant-Recognizer.app */;
@@ -121,6 +127,7 @@
 			mainGroup = E6A9155B2929460E00E72B22;
 			packageReferences = (
 				E6A9157F29294F3E00E72B22 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E6A915842929650C00E72B22 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = E6A915652929460F00E72B22 /* Products */;
 			projectDirPath = "";
@@ -149,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A9158329295C5D00E72B22 /* FlowerData.swift in Sources */,
 				E6A9157E292947AF00E72B22 /* FlowerClassifier.mlmodel in Sources */,
 				E6A9156C2929460F00E72B22 /* ViewController.swift in Sources */,
 				E6A915682929460F00E72B22 /* AppDelegate.swift in Sources */,
@@ -380,6 +388,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E6A915842929650C00E72B22 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -387,6 +403,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E6A9157F29294F3E00E72B22 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E6A915852929650C00E72B22 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6A915842929650C00E72B22 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

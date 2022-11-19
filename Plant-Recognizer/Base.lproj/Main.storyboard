@@ -16,17 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0GC-R8-nYD">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fEB-E9-LM3">
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0GC-R8-nYD">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="374.66666666666669"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2R-wU-4qN">
+                                        <rect key="frame" x="0.0" y="374.66666666666674" width="393" height="374.33333333333326"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0GC-R8-nYD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="B74-ya-9F7"/>
-                            <constraint firstAttribute="bottom" secondItem="0GC-R8-nYD" secondAttribute="bottom" id="QiE-x1-uLr"/>
-                            <constraint firstItem="0GC-R8-nYD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UKg-d7-iDe"/>
-                            <constraint firstItem="0GC-R8-nYD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rX2-cU-mHK"/>
+                            <constraint firstItem="fEB-E9-LM3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="42p-xL-p0z"/>
+                            <constraint firstAttribute="trailing" secondItem="fEB-E9-LM3" secondAttribute="trailing" id="WkF-O9-usj"/>
+                            <constraint firstItem="fEB-E9-LM3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tXn-zU-5ij"/>
+                            <constraint firstAttribute="bottom" secondItem="fEB-E9-LM3" secondAttribute="bottom" id="yWf-vn-BgN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6c0-XV-bqU">
@@ -38,6 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="0GC-R8-nYD" id="330-fC-FoQ"/>
+                        <outlet property="textLabel" destination="G2R-wU-4qN" id="Ljl-T4-QVL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

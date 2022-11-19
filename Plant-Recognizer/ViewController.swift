@@ -8,10 +8,12 @@
 import UIKit
 import CoreML
 import Vision
+import SDWebImage
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textLabel: UILabel!
     
     var camera : UIImagePickerController?
     let wikipediaURl = "https://en.wikipedia.org/w/api.php"
@@ -77,20 +79,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func performGetRequest(with flowerName: String) {
         
         let flowerID = flowerName.replacingOccurrences(of: " ", with: "%20")
-        let URLString = "\(wikipediaURl)?format=json&action=query&prop=extracts&exintro=&explaintest=&titles=\(flowerID)&indexpageids&redirects=1"
+        let URLString = "\(wikipediaURl)?format=json&action=query&prop=extracts&exsentences=3&exintro=&explaintext=&titles=\(flowerID)&indexpageids&redirects=1"
+        print(URLString)
         
         if let URL = URL(string: URLString) {
             let session = URLSession(configuration: .default)
             let request = URLRequest(url: URL)
             let task = session.dataTask(with: request) { data, response, error in
                 if let safeData = data {
-                    print(String(data: safeData, encoding: .utf8))
+                    if let description = self.parseJSON(safeData) {
+                        DispatchQueue.main.async {
+                            self.textLabel.text = description
+                        }
+                    }
                 }
             }
             task.resume()
         } else {
             fatalError("Couldn't form URL")
         }
+    }
+    
+    // parse JSON file from Wikipedia API
+    func parseJSON(_ data: Data) -> String? {
+        let decoder = JSONDecoder()
+        do {
+            let flowerData = try decoder.decode(FlowerData.self, from: data)
+            let pageID = flowerData.query.pageids[0]
+            return flowerData.query.pages[pageID]?.extract
+        } catch {
+            print("Error while decoding data: \(error.localizedDescription)")
+        }
+        return nil
     }
     
 }
